@@ -175,12 +175,30 @@ exports.post = function (endpoint, options) {
         }
         else if (options.method == "artists") {
           u += "artists?request_method=POST&artist_id=" + options.artist_id + "&access_token=" + data.t;
+        } else if (options.method == "playlists") {
+          if (options.title) u += "playlists?request_method=POST&title=" + options.title + "&access_token=" + data.t;
+          else if (options.playlist_id) u += "playlists?request_method=POST&playlist_id=" + options.playlist_id + "&access_token=" + data.t;
+        } else if (options.method == "podcasts") {
+          u += "podcasts?request_method=POST&podcast_id=" + options.podcast_id + "&access_token=" + data.t;
+        } else if (options.method == "radios") {
+          u += "radios?request_method=POST&radio_id=" + options.radio_id + "&access_token=" + data.t;
+        }else if (options.method == "tracks") {
+          u += "tracks?request_method=POST&track_id=" + options.track_id + "&access_token=" + data.t;
         }
         break;
       case "artist":
-        u = "https://api.deezer.com/artists/";
+        u = "https://api.deezer.com/artist/";
         if (options.method == "comments") {
           u += options.id + "/comments?request_method=POST&comment=" + options.comment + "&access_token=" + data.t;
+        }
+        break;
+      case "playlist":
+        u = "https://api.deezer.com/playlist/"+options.id + "/?request_method=POST&note=" + options.note + "&access_token=" + data.t;
+        if (options.method == "comments") {
+          u = "https://api.deezer.com/playlist/"+options.id + "/comments?request_method=POST&comment=" + options.comment + "&access_token=" + data.t;
+        }else if(options.method == "tracks"){
+          if(options.songs) u = "https://api.deezer.com/playlist/"+options.id + "/tracks?request_method=POST&songs=" + options.songs + "&access_token=" + data.t;
+          else if(options.order) u = "https://api.deezer.com/playlist/"+options.id + "/tracks?request_method=POST&order=" + options.order + "&access_token=" + data.t;
         }
         break;
     }
