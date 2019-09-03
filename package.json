@@ -1,5 +1,5 @@
 {
-  "name": "deezer-api",
+  "name": "api-deezer",
   "version": "1.0.0",
   "description": "Deezer api client for node.js",
   "main": "index.js",
