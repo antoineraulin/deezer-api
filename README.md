@@ -9,7 +9,7 @@ Asynchronous client for Deezer's API for node.js. Requires user authentication, 
 ### requirements
 - node.js
 - npm
-- deezer api IDs (app id, secret key) [(how to)]()
+- deezer api IDs (app id, secret key) [(how to)](#generate-deezer-api-ids-)
 
 ### setup
 
