@@ -224,29 +224,41 @@ exports.delete = function (endpoint, options) {
       case 'user':
         u = "https://api.deezer.com/user/me/";
         if (options.method == "albums") {
-          u += "albums?request_method=DELETE&album_id=" + options.album_id + "&access_token=" + data.t;
+          u += "albums?request_method=delete&album_id=" + options.album_id + "&access_token=" + data.t;
         } else if (options.method == "artists") {
-          u += "artists?request_method=DELETE&artist_id=" + options.artist_id + "&access_token=" + data.t;
+          u += "artists?request_method=delete&artist_id=" + options.artist_id + "&access_token=" + data.t;
         }else if (options.method == "playlists") {
-          u += "playlists?request_method=DELETE&playlist_id=" + options.playlist_id + "&access_token=" + data.t;
+          u += "playlists?request_method=delete&playlist_id=" + options.playlist_id + "&access_token=" + data.t;
         }else if (options.method == "podcasts") {
-          u += "podcasts?request_method=DELETE&podcast_id=" + options.podcast_id + "&access_token=" + data.t;
+          u += "podcasts?request_method=delete&podcast_id=" + options.podcast_id + "&access_token=" + data.t;
         }else if (options.method == "radios") {
-          u += "radios?request_method=DELETE&radio_id=" + options.radio_id + "&access_token=" + data.t;
+          u += "radios?request_method=delete&radio_id=" + options.radio_id + "&access_token=" + data.t;
         }else if (options.method == "tracks") {
-          u += "tracks?request_method=DELETE&track_id=" + options.track_id + "&access_token=" + data.t;
+          u += "tracks?request_method=delete&track_id=" + options.track_id + "&access_token=" + data.t;
         }
         break;
       case 'comment':
-        u = "https://api.deezer.com/comment/" + options.id + "?request_method=DELETE&access_token=" + data.t;
+        u = "https://api.deezer.com/comment/" + options.id + "?request_method=delete&access_token=" + data.t;
         break;
       case 'playlist':
-          u = "https://api.deezer.com/playlist/" + options.id + "?request_method=DELETE&access_token=" + data.t;
+          u = "https://api.deezer.com/playlist/" + options.id + "?request_method=delete&access_token=" + data.t;
           if(options.method == "tracks"){
-            u = "https://api.deezer.com/playlist/" + options.id +"/tracks?request_method=DELETE&songs="+options.songs+"&access_token=" + data.t;
+            u = "https://api.deezer.com/playlist/" + options.id +"/tracks?request_method=delete&songs="+options.songs+"&access_token=" + data.t;
           }
           break;
     }
+    request(u, function (error, response, body) {
+      if (error) {
+        reject(error);
+      } else {
+        try {
+          var b = JSON.parse(body);
+          resolve(b);
+        } catch (e) {
+          reject(e);
+        }
+      }
+    });
   });
 }
 
