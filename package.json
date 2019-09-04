@@ -1,6 +1,6 @@
 {
   "name": "api-deezer",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Deezer api client for node.js",
   "main": "index.js",
   "scripts": {
@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/antoineraulin/deezer-api/issues"
   },
-  "homepage": "https://github.com/antoineraulin/deezer-api#readme"
+  "homepage": "https://github.com/antoineraulin/deezer-api#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "request": "^2.88.0"
+  }
 }
