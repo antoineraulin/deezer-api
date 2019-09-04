@@ -42,9 +42,10 @@ git clone https://github.com/antoineraulin/deezer-api.git api-deezer
 {
     "app_id": "your app id",
     "secret_key": "the secret key",
-    "url": "http://*.*.*.*:8765/auth" # replace *.*.*.* with what you need, see the section on creating deezer IDs
+    "url": "http://*.*.*.*:8765/auth"
 }
 ```
+replace `*.*.*.*` with what you need, see the section on creating deezer IDs
 
 ### example
 
